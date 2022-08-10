@@ -1,0 +1,6 @@
+{
+    "name": "My Provider Package",
+    "id": "com.syncler.kosmos.mypackage",
+    "version": 1,
+    "classPath": "myProvider.MyPackage"
+}

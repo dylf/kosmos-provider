@@ -1,0 +1,18 @@
+{
+  "name": "kosmos-provider",
+  "version": "0.0.1",
+  "description": "",
+  "main": "provider.js",
+  "scripts": {
+    "build": "tsc && rollup -c rollup.config.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.4",
+    "axios": "^0.27.2",
+    "rollup": "^2.77.2",
+    "typescript": "^4.7.4"
+  }
+}
