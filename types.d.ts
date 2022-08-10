@@ -31,9 +31,47 @@ export interface ProviderEnv {
   };
 }
 
-export interface SourceRequest {
-  [key: string]: unknown;
+type Title = {
+  title: string;
+  language: string;
+};
+interface ContentItem {
+  titles: {
+    main: Title;
+    original?: Title;
+    alternate?: Array<Title>;
+  };
+  cast?: Array<String>;
+  crew?: Array<String>;
+  release: number; // unix timestamp
+  ids: {
+    imdb: string;
+    tmdb: string;
+    trakt: string;
+    tvdb: string;
+    mal: string;
+  };
+  standard: boolean; // true for all content retrieved from trakt/tmdb
+  anime: boolean; // true for all content retrieved from mal/anilist
+  thirdParty: boolean; // true for all content retrieved from third party sources
+  url: string; // url of where the item was retrieved from
 }
+
+interface MovieRequest {
+  movie: ContentItem;
+  episode: never;
+}
+
+interface EpisodeRequest {
+  episode: {
+    episodeNumber: number;
+    seasonNumber: number;
+    show: ContentItem;
+  };
+  movie: never;
+}
+
+export type SourceRequest = MovieRequest | EpisodeRequest;
 
 export interface Source {
   url: string;
