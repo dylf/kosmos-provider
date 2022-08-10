@@ -3,7 +3,8 @@
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
   "version": 1,
-  "classPath": "myProvider.MyPackage"
+  "classPath": "myProvider.MyPackage",
+  "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
 */
 
@@ -17,7 +18,7 @@
         metadata;
         constructor() {
             this.metadata = {
-                name: 'WatchNow',
+                name: '<My Provider />',
                 premium: false,
                 containsTorrents: false,
                 requiresDebrid: false,
@@ -27,13 +28,21 @@
         search(env, request) {
             return new Promise((resolve, reject) => {
                 let sources = [];
-                let keys = Object.getOwnPropertyNames(env.httpClientFactory);
+                let keys = Object.keys(request);
                 keys.forEach((variable) => {
                     sources.push({
                         providerName: 'false',
                         name: 'thefilename.mkv',
                         resolved: true,
                         host: JSON.stringify(variable),
+                        quality: '4k',
+                        url: 'https://file-examples.com/storage/fe522079b962f100d94fb66/2017/04/file_example_MP4_480_1_5MG.mp4',
+                    });
+                    sources.push({
+                        providerName: 'false',
+                        name: 'thefilename.mkv',
+                        resolved: true,
+                        host: JSON.stringify(request[variable]),
                         quality: '4k',
                         url: 'https://file-examples.com/storage/fe522079b962f100d94fb66/2017/04/file_example_MP4_480_1_5MG.mp4',
                     });
