@@ -2,7 +2,7 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 4,
+  "version": 5,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
@@ -13,6 +13,22 @@
     typeof define === 'function' && define.amd ? define(['exports'], factory) :
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.myProvider = {}));
 })(this, (function (exports) { 'use strict';
+
+    const getEncryptedKey = async (data) => {
+        let key = await window.crypto.subtle.importKey('raw', new TextEncoder().encode('37911490979715163134003223491201'), 'AES-CBC', true, ['encrypt', 'decrypt']);
+        return await window.crypto.subtle.encrypt({
+            name: 'AES-CBC',
+            iv: new TextEncoder().encode('3134003223491201'),
+        }, key, new TextEncoder().encode(data));
+    };
+    const decryptTheScript = async (script) => {
+        let key = await window.crypto.subtle.importKey('raw', new TextEncoder().encode('37911490979715163134003223491201'), 'AES-CBC', true, ['encrypt', 'decrypt']);
+        const decrypted = await window.crypto.subtle.decrypt({
+            name: 'AES-CBC',
+            iv: new TextEncoder().encode('3134003223491201'),
+        }, key, Buffer.from(script));
+        return new TextDecoder().decode(decrypted);
+    };
 
     class Provider {
         metadata;
@@ -48,13 +64,30 @@
                     ...defaults,
                     host: JSON.stringify(item.titles.main),
                 });
-                const testDecode = new TextEncoder().encode('chicken');
-                const decoded = new TextDecoder().decode(testDecode);
-                sources.push({
-                    ...defaults,
-                    host: JSON.stringify(decoded),
+                getEncryptedKey('foo')
+                    .then((enc) => {
+                    const byteArrayToBase64 = (array) => {
+                        let u_binary = '';
+                        let u_bytes = new Uint8Array(array);
+                        let u_len = u_bytes.byteLength;
+                        for (let i = 0; i < u_len; i++) {
+                            u_binary += String.fromCharCode(u_bytes[i]);
+                        }
+                        return btoa(u_binary);
+                    };
+                    const dec = byteArrayToBase64(enc);
+                    return decryptTheScript(dec);
+                })
+                    .then((de) => {
+                    sources.push({
+                        ...defaults,
+                        host: JSON.stringify(de),
+                    });
+                    return resolve(sources);
+                })
+                    .catch(() => {
+                    resolve(sources);
                 });
-                resolve(sources);
             });
         }
     }
