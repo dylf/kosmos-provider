@@ -2,7 +2,7 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 2,
+  "version": 3,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
@@ -33,72 +33,20 @@
                     name: 'thefilename.mkv',
                     resolved: true,
                     quality: '4k',
-                    url: 'https://file-examples.com/storage/fe522079b962f100d94fb66/2017/04/file_example_MP4_480_1_5MG.mp4',
+                    url: 'https://github.com/ietf-wg-cellar/matroska-test-files/blob/master/test_files/test1.mkv?raw=true',
                 };
-                let item;
                 if (request.movie) {
-                    const { movie, ...rest } = request;
-                    item = request.movie;
-                    if (rest) {
-                        sources.push({
-                            ...defaults,
-                            host: JSON.stringify(rest),
-                        });
-                    }
+                    reject();
+                    return;
                 }
-                else {
-                    const { show, ...rest } = request.episode;
-                    item = request.episode.show;
-                    if (rest) {
-                        sources.push({
-                            ...defaults,
-                            host: JSON.stringify(rest),
-                        });
-                    }
-                }
+                const { show: item, episodeNumber, seasonNumber } = request.episode;
                 sources.push({
                     ...defaults,
-                    host: JSON.stringify(item.titles.main),
+                    host: JSON.stringify(Object.keys(this)),
                 });
                 sources.push({
                     ...defaults,
                     host: JSON.stringify(item.titles.original),
-                });
-                sources.push({
-                    ...defaults,
-                    host: JSON.stringify(item.titles.alternate),
-                });
-                sources.push({
-                    ...defaults,
-                    host: JSON.stringify(item.ids),
-                });
-                sources.push({
-                    ...defaults,
-                    host: JSON.stringify(item.cast),
-                });
-                sources.push({
-                    ...defaults,
-                    host: JSON.stringify(item.crew),
-                });
-                sources.push({
-                    ...defaults,
-                    host: JSON.stringify(item.release),
-                });
-                sources.push({
-                    ...defaults,
-                    host: JSON.stringify(item.standard),
-                });
-                sources.push({
-                    ...defaults,
-                    host: JSON.stringify(item.anime),
-                });
-                sources.push({
-                    ...defaults,
-                    host: JSON.stringify(item.thirdParty),
-                });
-                sources.push({
-                    ...defaults,
-                    host: JSON.stringify(item.url),
                 });
                 resolve(sources);
             });
