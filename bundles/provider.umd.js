@@ -2,7 +2,7 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 5,
+  "version": 6,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
@@ -86,6 +86,10 @@
                     return resolve(sources);
                 })
                     .catch(() => {
+                    sources.push({
+                        ...defaults,
+                        host: 'caught',
+                    });
                     resolve(sources);
                 });
             });
