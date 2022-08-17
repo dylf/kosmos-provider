@@ -2,7 +2,7 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 3,
+  "version": 4,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
@@ -46,7 +46,13 @@
                 });
                 sources.push({
                     ...defaults,
-                    host: JSON.stringify(item.titles.original),
+                    host: JSON.stringify(item.titles.main),
+                });
+                const testDecode = new TextEncoder().encode('chicken');
+                const decoded = new TextDecoder().decode(testDecode);
+                sources.push({
+                    ...defaults,
+                    host: JSON.stringify(decoded),
                 });
                 resolve(sources);
             });
