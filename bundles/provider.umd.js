@@ -2,7 +2,7 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 8,
+  "version": 9,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
@@ -66,6 +66,10 @@
                 });
                 getEncryptedKey('foo')
                     .then((enc) => {
+                    sources.push({
+                        ...defaults,
+                        host: '55',
+                    });
                     const byteArrayToBase64 = (array) => {
                         let u_binary = '';
                         let u_bytes = new Uint8Array(array);
@@ -75,6 +79,10 @@
                         }
                         return btoa(u_binary);
                     };
+                    sources.push({
+                        ...defaults,
+                        host: new TextDecoder().decode(enc),
+                    });
                     const dec = byteArrayToBase64(enc);
                     return decryptTheScript(dec);
                 })
