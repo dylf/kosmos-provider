@@ -2,7 +2,7 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 11,
+  "version": 12,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
@@ -62,7 +62,9 @@
                 const defaults = {
                     providerName: 'myprovider',
                     host: 'GoGoAnime',
-                    resolved: true,
+                    premium: false,
+                    name: 'name1',
+                    resolved: false,
                 };
                 const axios = env.httpClientFactory.createNewInstance();
                 getAnimeData(axios, item.titles.main.title)
