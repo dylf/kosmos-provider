@@ -2,7 +2,7 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 10,
+  "version": 11,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
@@ -90,8 +90,8 @@
                             headers: dubSources.headers,
                         });
                     });
+                    resolve(sources);
                 });
-                resolve(sources);
             });
         }
     }
@@ -115,6 +115,7 @@
     }
 
     exports.MyPackage = MyPackage;
+    exports.Provider = Provider;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
