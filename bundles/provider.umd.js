@@ -62,8 +62,8 @@
                 const defaults = {
                     providerName: 'myprovider',
                     host: 'GoGoAnime',
-                    premium: false,
-                    name: 'name1',
+                    premium: true,
+                    name: 'name',
                     resolved: false,
                 };
                 const axios = env.httpClientFactory.createNewInstance();
