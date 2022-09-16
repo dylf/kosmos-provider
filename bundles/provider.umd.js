@@ -2,7 +2,7 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 16,
+  "version": 17,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
@@ -100,7 +100,6 @@
                         host: 'GaGa',
                         url: 'https://wwwx19.gogocdn.stream/videos/hls/Q8ac5SMyJO3mcuhZa47lwA/1663308826/14328/334ff10f2eac9773b951c0373b65a355/ep.1.1662458242.360.m3u8',
                         subbed: false,
-                        quality: '360p',
                         dubbed: true,
                         resolved: true,
                     });
@@ -109,7 +108,6 @@
                         host: 'GaGa',
                         url: 'https://wwwx19.gogocdn.stream/videos/hls/Q8ac5SMyJO3mcuhZa47lwA/1663308826/14328/334ff10f2eac9773b951c0373b65a355/ep.1.1662458242.360.m3u8',
                         subbed: false,
-                        quality: '360p',
                         dubbed: true,
                         resolved: true,
                         headers: {
