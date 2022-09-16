@@ -2,7 +2,7 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 14,
+  "version": 15,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
@@ -89,6 +89,7 @@
                             quality: source.quality,
                             subbed: false,
                             dubbed: true,
+                            resolved: true,
                             headers: {
                                 Referer: 'https://kwik.cx/',
                             },
