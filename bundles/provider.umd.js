@@ -2,7 +2,7 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 13,
+  "version": 14,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
@@ -85,11 +85,13 @@
                     dubSources.sources.forEach((source) => {
                         sources.push({
                             ...defaults,
-                            url: source.url,
+                            url: 'https://na-991.files.nextcdn.org/hls/01/c9504d22e58850680f856b8dd73e69d0db630988553f5602e0138524e14df4d6/owo.m3u8',
                             quality: source.quality,
                             subbed: false,
                             dubbed: true,
-                            headers: dubSources.headers,
+                            headers: {
+                                Referer: 'https://kwik.cx/',
+                            },
                         });
                     });
                     resolve(sources);
