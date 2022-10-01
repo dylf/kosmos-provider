@@ -2,7 +2,7 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 20,
+  "version": 21,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
@@ -85,7 +85,7 @@
                     dubSources.sources.forEach((source) => {
                         sources.push({
                             ...defaults,
-                            url: 'https://na-991.files.nextcdn.org/hls/01/c9504d22e58850680f856b8dd73e69d0db630988553f5602e0138524e14df4d6/owo.m3u8',
+                            url: 'https://wwwx17.gogocdn.stream/videos/hls/JdSFzZ2bncuR-ZaNlhMAoA/1664677384/14256/5488f3268d41f9148a85959cc1c1fb32/ep.1.1658430210.360.m3u8',
                             quality: source.quality,
                             subbed: false,
                             dubbed: true,
@@ -97,11 +97,14 @@
                     });
                     sources.push({
                         ...defaults,
-                        host: 'GaGa',
-                        url: 'https://wwwx19.gogocdn.stream/videos/hls/Q8ac5SMyJO3mcuhZa47lwA/1663308826/14328/334ff10f2eac9773b951c0373b65a355/ep.1.1662458242.360.m3u8',
+                        host: 'GoodRef',
+                        url: 'https://wwwx17.gogocdn.stream/videos/hls/JdSFzZ2bncuR-ZaNlhMAoA/1664677384/14256/5488f3268d41f9148a85959cc1c1fb32/ep.1.1658430210.360.m3u8',
                         subbed: false,
                         dubbed: true,
                         resolved: true,
+                        headers: {
+                            Referer: 'https://kwik.cx/',
+                        },
                     });
                     sources.push({
                         ...defaults,
@@ -111,7 +114,7 @@
                         dubbed: true,
                         resolved: true,
                         headers: {
-                            Referer: 'https://gogohd.net/streaming.php?id=MTQzMjg=&title=Cowboy+Bebop+Episode+1',
+                            Referer: 'https://gogohd.net/streaming.php?id=MTQyNTY=&title=Dragon+Ball+Episode+1',
                         },
                     });
                     resolve(sources);
