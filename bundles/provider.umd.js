@@ -2,7 +2,7 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 17,
+  "version": 20,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
@@ -61,7 +61,7 @@
                 }
                 const defaults = {
                     providerName: 'myprovider',
-                    host: 'GoGoAnime',
+                    host: 'GoGoAnimeAHH',
                     premium: true,
                     name: 'name',
                     resolved: false,
