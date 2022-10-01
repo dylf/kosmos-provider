@@ -2,17 +2,21 @@
 {
   "name": "My Provider Package",
   "id": "com.syncler.kosmos.mypackage",
-  "version": 21,
+  "version": 22,
   "classPath": "myProvider.MyPackage",
   "permaUrl": "https://raw.githubusercontent.com/dylf/kosmos-provider/main/bundles/provider.umd.js"
 } 
 */
 
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-    typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.myProvider = {}));
-})(this, (function (exports) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('hls.js')) :
+    typeof define === 'function' && define.amd ? define(['exports', 'hls.js'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.myProvider = {}, global.Hls));
+})(this, (function (exports, Hls) { 'use strict';
+
+    function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+    var Hls__default = /*#__PURE__*/_interopDefaultLegacy(Hls);
 
     async function getAnimeData(httpClient, title) {
         const result = await httpClient.get(`https://consumet-api.herokuapp.com/anime/gogoanime/${title}`);
@@ -40,7 +44,7 @@
         metadata;
         constructor() {
             this.metadata = {
-                name: '<My Provider />',
+                name: Hls__default["default"].isSupported() ? '<My Provider />' : 'Nahh',
                 premium: false,
                 containsTorrents: false,
                 requiresDebrid: false,
