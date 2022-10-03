@@ -59,7 +59,7 @@ interface ContentItem {
 
 interface MovieRequest {
   movie: ContentItem;
-  episode: never;
+  episode?: never;
 }
 
 interface EpisodeRequest {
@@ -68,7 +68,7 @@ interface EpisodeRequest {
     seasonNumber: number;
     show: ContentItem;
   };
-  movie: never;
+  movie?: never;
 }
 
 export type SourceRequest = MovieRequest | EpisodeRequest;
@@ -112,4 +112,26 @@ export interface ProviderPackage {
     env: ProviderEnv,
     metadata: ProviderMetadata
   ) => SourceProvider;
+}
+
+export interface AnimeData {
+  id: string;
+  title: string;
+  url: string;
+  image: string;
+  releaseDate: string;
+  subOrDub: 'sub' | 'dub';
+}
+
+export interface AnimeSourceData {
+  headers: {
+    Referer: string;
+    watchsb?: string;
+    'User-Agent'?: string;
+  };
+  sources: Array<{
+    url: string;
+    isM3U8: boolean;
+    quality?: string;
+  }>;
 }

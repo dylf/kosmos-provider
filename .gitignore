@@ -1,3 +1,10 @@
+# Ignore the dev manifest, used for local development only
+manifest.dev.json
+
+# Local only files
+test.http
+searchFixture.json
+
 # Logs
 logs
 *.log
